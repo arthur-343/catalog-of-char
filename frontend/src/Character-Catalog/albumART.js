@@ -32,7 +32,7 @@ export default function Album() {
 
   useEffect(() => {
     // Requisição para obter os personagens da API
-    api.get("/characterMain")  // Assumindo que o endpoint seja "/characterMain"
+    api.get("/characters")  // Assumindo que o endpoint seja "/characterMain"
       .then((response) => {
         setCharacters(response.data);  // Atualiza o estado com os dados da resposta
       })
