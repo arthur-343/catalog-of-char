@@ -1,11 +1,12 @@
 package com.example.character.entities;
 
-import com.example.character.entitiesDTO.CharacterEntityRequestDTO;
+import java.io.Serializable;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -20,10 +21,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class CharacterEntityMain {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CharacterEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "character_seq")
+    @SequenceGenerator(name = "character_seq", sequenceName = "character_seq", allocationSize = 1)
     private Long id;
     
     private String name;
@@ -32,13 +36,4 @@ public class CharacterEntityMain {
     private String origin;
     private String series;
     private Integer age;
-    
-    public CharacterEntityMain(CharacterEntityRequestDTO characterEntityRequestDTO) {
-    	this.name = characterEntityRequestDTO.name();
-    	this.power = characterEntityRequestDTO.power();
-    	this.occupation = characterEntityRequestDTO.occupation();
-    	this.origin = characterEntityRequestDTO.origin();
-    	this.series = characterEntityRequestDTO.series();
-    	this.age = characterEntityRequestDTO.age();
-    }
 }

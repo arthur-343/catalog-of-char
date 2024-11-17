@@ -1,6 +1,6 @@
 package com.example.character.entitiesDTO;
 
-import com.example.character.entities.CharacterEntityMain;
+import com.example.character.entities.CharacterEntity;
 
 public record CharacterEntityResponseDTO(
         Long id,
@@ -11,7 +11,7 @@ public record CharacterEntityResponseDTO(
         String series,
         Integer age
 ) {
-    public CharacterEntityResponseDTO(CharacterEntityMain characterEntityMain) {
+    public CharacterEntityResponseDTO(CharacterEntity characterEntityMain) {
         this(
             characterEntityMain.getId(),
             characterEntityMain.getName(),
